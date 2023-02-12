@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = function () {
+const BookingForm = function ({ availableTimes }) {
   const style = { display: "grid", maxWidth: "200px", gap: "20px" };
   let d = new Date();
   const dateTimeLocalValue = new Date(
@@ -8,8 +8,6 @@ const BookingForm = function () {
   )
     .toISOString()
     .slice(0, -5);
-
-  const availableTimes = ["16:00", "16:30", "17:00", "18:00", "18:30"];
 
   const [date, setDate] = useState(dateTimeLocalValue);
   const [time, setTime] = useState(availableTimes[0]);

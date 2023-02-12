@@ -10,9 +10,7 @@ function App() {
     <>
       <Header></Header>
       <Nav></Nav>
-      <Main>
-        <BookingForm></BookingForm>
-      </Main>
+      <Main></Main>
       <Footer></Footer>
     </>
   );
