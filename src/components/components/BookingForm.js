@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookingForm = function ({ availableTimes }) {
+const BookingForm = function ({ availableTimes, updateTimes }) {
   const style = { display: "grid", maxWidth: "200px", gap: "20px" };
   let d = new Date();
   const dateTimeLocalValue = new Date(
@@ -14,7 +14,7 @@ const BookingForm = function ({ availableTimes }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
   return (
-    <form style={style}>
+    <form style={style} onSubmit={updateTimes({ type: time })}>
       {date}
       {time}
       {guests}
