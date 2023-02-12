@@ -14,7 +14,7 @@ const BookingForm = function ({ availableTimes, updateTimes }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
   return (
-    <form style={style} onSubmit={updateTimes({ type: time })}>
+    <form style={style}>
       {date}
       {time}
       {guests}
@@ -23,7 +23,10 @@ const BookingForm = function ({ availableTimes, updateTimes }) {
       <input
         type="date"
         value={date}
-        onChange={(event) => setDate(event.target.value)}
+        onChange={(event) => {
+          updateTimes({ type: time });
+          setDate(event.target.value);
+        }}
         id="res-date"
       />
       {date}
@@ -56,7 +59,7 @@ const BookingForm = function ({ availableTimes, updateTimes }) {
         <option>Birthday</option>
         <option>Anniversary</option>
       </select>
-      <input type="submit" value="Make Your reservation" />
+      <input type="submit" value="Book Now" />
     </form>
   );
 };
