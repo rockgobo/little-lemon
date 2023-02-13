@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const BookingForm = function ({ availableTimes, updateTimes }) {
+const BookingForm = function ({ availableTimes }) {
   const style = { display: "grid", maxWidth: "200px", gap: "20px" };
   let d = new Date();
   const dateTimeLocalValue = new Date(
@@ -13,8 +14,11 @@ const BookingForm = function ({ availableTimes, updateTimes }) {
   const [time, setTime] = useState(availableTimes[0]);
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
+
+  const navigate = useNavigate();
+
   return (
-    <form style={style}>
+    <form style={style} onSubmit={navigate("/confirmBooking")}>
       {date}
       {time}
       {guests}
@@ -24,7 +28,6 @@ const BookingForm = function ({ availableTimes, updateTimes }) {
         type="date"
         value={date}
         onChange={(event) => {
-          updateTimes({ type: time });
           setDate(event.target.value);
         }}
         id="res-date"

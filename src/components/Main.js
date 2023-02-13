@@ -9,14 +9,11 @@ export default function Main() {
     return state;
   };
 
-  const [availableTimes, dispatch] = useReducer(updateTimes, initialTimes);
+  const [availableTimes] = useReducer(updateTimes, initialTimes);
 
   return (
     <main>
-      <BookingForm
-        availableTimes={availableTimes}
-        updateTimes={dispatch}
-      ></BookingForm>
+      <BookingForm availableTimes={availableTimes}></BookingForm>
     </main>
   );
 }
