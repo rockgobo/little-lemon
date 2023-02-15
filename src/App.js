@@ -1,6 +1,5 @@
 import { Route, RouterProvider, Routes } from "react-router-dom";
 import "./App.css";
-import BookingForm from "./components/components/BookingForm";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Main from "./components/Main";
