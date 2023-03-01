@@ -1,19 +1,29 @@
-import React, { useReducer } from "react";
-import BookingForm from "./components/BookingForm";
-import { fetchAPI } from "../utils/api";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Home from "./pages/Home";
+import Booking from "./pages/Booking";
+import ConfirmBooking from "./pages/ConfirmBooking";
 
-export default function Main() {
-  const initialTimes = fetchAPI(new Date());
-  const updateTimes = (state, action) => {
-    console.log("reducer called with action", action);
-    return state;
-  };
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "booking",
+    element: <Booking />,
+  },
+  {
+    path: "confirmBooking",
+    element: <ConfirmBooking />,
+  },
+]);
 
-  const [availableTimes] = useReducer(updateTimes, initialTimes);
-
+function Main() {
   return (
     <main>
-      <BookingForm availableTimes={availableTimes}></BookingForm>
+      <RouterProvider router={router} />
     </main>
   );
 }
+
+export default Main;

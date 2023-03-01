@@ -1,8 +1,9 @@
+import { FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const BookingForm = function ({ availableTimes }) {
-  const style = { display: "grid", maxWidth: "200px", gap: "20px" };
+  const style = { display: "grid", maxWidth: "400px", gap: "20px" };
   let d = new Date();
   const dateTimeLocalValue = new Date(
     d.getTime() - d.getTimezoneOffset() * 60000
@@ -19,50 +20,52 @@ const BookingForm = function ({ availableTimes }) {
 
   return (
     <form style={style} onSubmit={navigate("/confirmBooking")}>
-      {date}
-      {time}
-      {guests}
-      {occasion}
-      <label htmlFor="res-date">Choose date</label>
-      <input
-        type="date"
-        value={date}
-        onChange={(event) => {
-          setDate(event.target.value);
-        }}
-        id="res-date"
-      />
-      {date}
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        id="res-time "
-        value={time}
-        onChange={(event) => setTime(event.target.value)}
-      >
-        {availableTimes.map((t) => (
-          <option key={t}>{t}</option>
-        ))}
-      </select>
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="number"
-        placeholder="1"
-        min="1"
-        max="10"
-        id="guests"
-        value={guests}
-        onChange={(event) => setGuests(event.target.value)}
-      />
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        value={occasion}
-        onChange={(event) => setOccasion(event.target.value)}
-      >
-        <option>Birthday</option>
-        <option>Anniversary</option>
-      </select>
-      <input type="submit" value="Book Now" />
+      <FormControl>
+        <FormLabel htmlFor="res-date">Choose date</FormLabel>
+        <Input
+          type="date"
+          value={date}
+          onChange={(event) => {
+            setDate(event.target.value);
+          }}
+          id="res-date"
+        />
+      </FormControl>
+
+      <FormControl>
+        <FormLabel>Choose time</FormLabel>
+        <Select value={time} onChange={(event) => setTime(event.target.value)}>
+          {availableTimes.map((t) => (
+            <option key={t}>{t}</option>
+          ))}
+        </Select>
+      </FormControl>
+
+      <FormControl>
+        <FormLabel htmlFor="guests">Number of guests</FormLabel>
+        <Input
+          type="number"
+          placeholder="1"
+          min="1"
+          max="10"
+          id="guests"
+          value={guests}
+          onChange={(event) => setGuests(event.target.value)}
+        />
+      </FormControl>
+
+      <FormControl>
+        <FormLabel htmlFor="occasion">Occasion</FormLabel>
+        <Select
+          id="occasion"
+          value={occasion}
+          onChange={(event) => setOccasion(event.target.value)}
+        >
+          <option>Birthday</option>
+          <option>Anniversary</option>
+        </Select>
+      </FormControl>
+      <Input type="submit" value="Book Now" />
     </form>
   );
 };
