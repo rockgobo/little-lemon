@@ -1,14 +1,14 @@
-import { Link, HStack } from "@chakra-ui/react";
+import { Link, HStack, Button } from "@chakra-ui/react";
 
 export default function Nav() {
   return (
     <nav>
       <HStack>
         <Link href="/" aria-label="Change view to home">
-          Home
+          <Button>Home</Button>
         </Link>
         <Link href="/booking" aria-label="Enter new booking">
-          Booking
+          <Button>Booking</Button>
         </Link>
       </HStack>
     </nav>

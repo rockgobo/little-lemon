@@ -6,7 +6,7 @@ import {
   Routes,
   useNavigate,
 } from "react-router-dom";
-import Home from "./pages/Home";
+import HomePage from "./pages/HomePage";
 import Booking from "./pages/Booking";
 import ConfirmBooking from "./pages/ConfirmBooking";
 
@@ -15,7 +15,7 @@ function Main() {
     <main>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="booking" element={<Booking />} />
           <Route path="confirmBooking" element={<ConfirmBooking />} />
         </Routes>
