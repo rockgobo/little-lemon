@@ -1,27 +1,25 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  Route,
+  RouterProvider,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Booking from "./pages/Booking";
 import ConfirmBooking from "./pages/ConfirmBooking";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "booking",
-    element: <Booking />,
-  },
-  {
-    path: "confirmBooking",
-    element: <ConfirmBooking />,
-  },
-]);
-
 function Main() {
   return (
     <main>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="booking" element={<Booking />} />
+          <Route path="confirmBooking" element={<ConfirmBooking />} />
+        </Routes>
+      </BrowserRouter>
     </main>
   );
 }
