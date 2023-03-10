@@ -1,7 +1,9 @@
 import { FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { submitAPI } from "../../utils/api";
+import FormAlert from "./FormAlert";
 
 const BookingForm = function ({ availableTimes, submitForm }) {
   const style = { display: "grid", maxWidth: "400px", gap: "20px" };
@@ -17,58 +19,64 @@ const BookingForm = function ({ availableTimes, submitForm }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-    submitForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    submitForm(data);
   };
 
   return (
-    <form style={style} onSubmit={onSubmit}>
+    <form style={style} onSubmit={handleSubmit(onSubmit)}>
       <FormControl>
         <FormLabel htmlFor="res-date">Choose date</FormLabel>
         <Input
           type="date"
-          value={date}
-          onChange={(event) => {
-            setDate(event.target.value);
-            return false;
-          }}
+          {...register("date", { required: true })}
           id="res-date"
         />
+        {errors.date && <FormAlert>This field is required</FormAlert>}
       </FormControl>
 
       <FormControl>
         <FormLabel>Choose time</FormLabel>
-        <Select value={time} onChange={(event) => setTime(event.target.value)}>
+        <Select {...register("time", { required: true })}>
           {availableTimes.map((t) => (
             <option key={t}>{t}</option>
           ))}
         </Select>
+        {errors.time && <FormAlert>This field is required</FormAlert>}
       </FormControl>
 
       <FormControl>
         <FormLabel htmlFor="guests">Number of guests</FormLabel>
         <Input
           type="number"
-          placeholder="1"
-          min="1"
-          max="10"
           id="guests"
-          value={guests}
-          onChange={(event) => setGuests(event.target.value)}
+          {...register("guests", { required: true, min: 1, max: 10 })}
         />
+        {errors.guests?.type === "required" && (
+          <FormAlert>Number of guests are required</FormAlert>
+        )}
+        {errors.guests?.type === "min" && (
+          <FormAlert>Please book at least 1 guest</FormAlert>
+        )}
+        {errors.guests?.type === "max" && (
+          <FormAlert>Booking for more than 10 guests is not possible</FormAlert>
+        )}
       </FormControl>
 
       <FormControl>
         <FormLabel htmlFor="occasion">Occasion</FormLabel>
-        <Select
-          id="occasion"
-          value={occasion}
-          onChange={(event) => setOccasion(event.target.value)}
-        >
+        <Select id="occasion" {...register("occasion", { required: true })}>
           <option>Birthday</option>
           <option>Anniversary</option>
         </Select>
+        {errors.occasion && <FormAlert>This field is required</FormAlert>}
       </FormControl>
       <Input type="submit" value="Book Now" />
     </form>
