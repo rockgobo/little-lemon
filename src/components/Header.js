@@ -1,3 +1,3 @@
 export default function Header() {
-    return <header>Little Lemon Logo</header>
+  return <header>Little Lemon</header>;
 }

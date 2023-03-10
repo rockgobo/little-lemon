@@ -1,8 +1,9 @@
 import { FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { submitAPI } from "../../utils/api";
 
-const BookingForm = function ({ availableTimes }) {
+const BookingForm = function ({ availableTimes, submitForm }) {
   const style = { display: "grid", maxWidth: "400px", gap: "20px" };
   let d = new Date();
   const dateTimeLocalValue = new Date(
@@ -16,10 +17,13 @@ const BookingForm = function ({ availableTimes }) {
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState("Birthday");
 
-  const navigate = useNavigate();
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    submitForm();
+  };
 
   return (
-    <form style={style} onSubmit={navigate("/confirmBooking")}>
+    <form style={style} onSubmit={onSubmit}>
       <FormControl>
         <FormLabel htmlFor="res-date">Choose date</FormLabel>
         <Input
@@ -27,6 +31,7 @@ const BookingForm = function ({ availableTimes }) {
           value={date}
           onChange={(event) => {
             setDate(event.target.value);
+            return false;
           }}
           id="res-date"
         />
