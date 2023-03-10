@@ -78,7 +78,7 @@ const BookingForm = function ({ availableTimes, submitForm }) {
         </Select>
         {errors.occasion && <FormAlert>This field is required</FormAlert>}
       </FormControl>
-      <Input type="submit" value="Book Now" />
+      <Input type="submit" value="Book Now" aria-label="Submit booking form" />
     </form>
   );
 };
