@@ -1,5 +1,6 @@
 .chicago {
-    background-color: var(--highlight);
+    background-color: var(--primary);
+    color: var(--highlight);
     margin: -20px;
-    padding: 20px;
+    padding: 40px;
 }

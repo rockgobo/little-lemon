@@ -5,8 +5,9 @@ import "./Chicago.css";
 function Chicago() {
   return (
     <Box className="chicago">
-      <Heading>Little Lemon Chicago restaurant</Heading>
-      <Text>
+      <Heading>Little Lemon</Heading>
+      <Heading size="md">Chicago restaurant</Heading>
+      <Text mt="5">
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
         voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet

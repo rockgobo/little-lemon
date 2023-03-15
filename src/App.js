@@ -20,7 +20,7 @@ function App() {
       pl="20"
       pr="20"
     >
-      <GridItem p="10" bg="orange.300" area={"header"}>
+      <GridItem p="10" area={"header"}>
         <Flex>
           <Header />
           <Spacer />
@@ -30,7 +30,7 @@ function App() {
       <GridItem p="10" area={"main"}>
         <Main />
       </GridItem>
-      <GridItem p="10" area={"footer"} bg="orange.300">
+      <GridItem p="10" area={"footer"} bg="var(--highlight)">
         <Footer />
       </GridItem>
     </Grid>
