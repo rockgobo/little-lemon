@@ -1,6 +1,5 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import Chicago from "../components/Chicago";
-import Hero from "../components/Hero";
 import Specials from "../components/Specials";
 
 function HomePage() {

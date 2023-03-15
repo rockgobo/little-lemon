@@ -1,5 +1,5 @@
 .chicago {
-    background-color: antiquewhite;
+    background-color: var(--highlight);
     margin: -20px;
     padding: 20px;
 }
